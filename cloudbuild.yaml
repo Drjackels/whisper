@@ -1,0 +1,16 @@
+
+options:
+  logging: GCS_ONLY
+
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'europe-west3-docker.pkg.dev/swiss-german-subtitle-tool-js/whisper-api/whisper:latest',
+        '.'
+      ]
+
+images:
+  - 'europe-west3-docker.pkg.dev/swiss-german-subtitle-tool-js/whisper-api/whisper:latest'
