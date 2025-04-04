@@ -4,20 +4,12 @@ kind: BuildTrigger
 metadata:
   name: whisper-trigger
 spec:
+  description: "Trigger for building Whisper from GitHub"
+  filename: "cloudbuild.yaml"   # Pfad zur Build-Konfiguration im Repo
   github:
-    owner: Drjackels
-    name: whisper
+    owner: "Drjackels"
+    name: "whisper"
     push:
       branch: '^main$'
-  build:
-    source:
-      repoSource:
-        projectId: swiss-german-subtitle-tool-js
-        repoName: whisper
-        branchName: main
-    steps:
-    - name: 'gcr.io/cloud-builders/docker'
-      args: ['build', '-t', 'gcr.io/$PROJECT_ID/whisper', '.']
-    images: ['gcr.io/$PROJECT_ID/whisper']
-  serviceAccount: api-subtitle@swiss-german-subtitle-tool-js.iam.gserviceaccount.com
-  logBucket: projects/_/buckets/cloud-build-logs-whisper
+  serviceAccount: "api-subtitle@swiss-german-subtitle-tool-js.iam.gserviceaccount.com"
+  logBucket: "projects/_/buckets/cloud-build-logs-whisper"
