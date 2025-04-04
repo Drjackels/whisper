@@ -1,15 +1,24 @@
-
 apiVersion: cloudbuild.googleapis.com/v1
 kind: BuildTrigger
-metadata:
-  name: whisper-trigger
-spec:
-  description: "Trigger for building Whisper from GitHub"
-  filename: "cloudbuild.yaml"   # Pfad zur Build-Konfiguration im Repo
-  github:
-    owner: "Drjackels"
-    name: "whisper"
-    push:
-      branch: '^main$'
-  serviceAccount: "api-subtitle@swiss-german-subtitle-tool-js.iam.gserviceaccount.com"
-  logBucket: "projects/_/buckets/cloud-build-logs-whisper"
+
+# Name des Triggers
+name: "whisper-trigger"
+
+# Kurze Beschreibung
+description: "Trigger for building Whisper from GitHub"
+
+# GitHub-Quellrepo
+github:
+  owner: "Drjackels"
+  name: "whisper"
+  push:
+    branch: "^main$"
+
+# Pfad zur Build-Konfiguration im Repo (cloudbuild.yaml)
+filename: "cloudbuild.yaml"
+
+# Dein benutzerverwaltetes Dienstkonto
+serviceAccount: "api-subtitle@swiss-german-subtitle-tool-js.iam.gserviceaccount.com"
+
+# Dein Logging-Bucket
+logBucket: "projects/_/buckets/cloud-build-logs-whisper"
